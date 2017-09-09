@@ -3,11 +3,16 @@ package com.platzi.profesoresplatzi.dao;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.platzi.profesoresplatzi.model.Teacher;
 import com.platzi.profesoresplatzi.model.TeacherSocialMedia;
 
 
-
+@Repository
+@Transactional
 public class TeacherDaoImpl extends AbstractSession implements TeacherDao {
 	
 	public void saveTeacher(Teacher teacher) {

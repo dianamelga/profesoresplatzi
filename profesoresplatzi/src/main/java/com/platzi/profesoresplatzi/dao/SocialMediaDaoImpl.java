@@ -2,11 +2,16 @@ package com.platzi.profesoresplatzi.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
+
 import com.platzi.profesoresplatzi.model.Course;
 import com.platzi.profesoresplatzi.model.SocialMedia;
 import com.platzi.profesoresplatzi.model.TeacherSocialMedia;
 import com.platzi.profesoresplatzi.model.Teacher;
-
+@Repository
+@Transactional
 public class SocialMediaDaoImpl extends AbstractSession implements SocialMediaDao {
 
 	public void saveSocialMedia(SocialMedia socialMedia) {
