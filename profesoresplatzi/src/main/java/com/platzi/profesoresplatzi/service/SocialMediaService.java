@@ -5,21 +5,18 @@ import java.util.List;
 import com.platzi.profesoresplatzi.model.SocialMedia;
 import com.platzi.profesoresplatzi.model.TeacherSocialMedia;
 
-
 public interface SocialMediaService {
-
-void saveSocialMedia(SocialMedia socialMedia);
+	void saveSocialMedia(SocialMedia socialMedia);
 	
-	void deleteSocialMediaById(Long idSocialMedia);
+	void deleteSocialMediaById(Long id);
 	
 	void updateSocialMedia(SocialMedia socialMedia);
 	
 	List<SocialMedia> findAllSocialMedias();
 	
-	SocialMedia findSocialMediaById(Long idSocialMedia);
-
+	SocialMedia findById(Long idSocialMedia);
+	
 	SocialMedia findByName(String name);
 	
 	TeacherSocialMedia findSocialMediaByIdAndName(Long idSocialMedia, String nickname);
-	
 }

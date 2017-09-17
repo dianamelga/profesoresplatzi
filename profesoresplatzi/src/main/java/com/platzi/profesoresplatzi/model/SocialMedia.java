@@ -1,4 +1,5 @@
 package com.platzi.profesoresplatzi.model;
+
 import java.io.Serializable;
 import java.util.Set;
 
@@ -11,13 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="social_media")
 public class SocialMedia implements Serializable {
+	
 	@Id
 	@Column(name="id_social_media")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long idSocialMedia;
+	private Long idSocialMedia;
 	
 	@Column(name="name")
 	private String name;
@@ -25,36 +29,24 @@ public class SocialMedia implements Serializable {
 	@Column(name="icon")
 	private String icon;
 	
-	
 	@OneToMany
 	@JoinColumn(name="id_social_media")
-	private Set<TeacherSocialMedia> teacherSocialMedia;
+	@JsonIgnore
+	private Set<TeacherSocialMedia> teacherSocialMedias;
 	
-	
-	
-	
-	
+	public SocialMedia(String name, String icon) {
+		super();
+		this.name = name;
+		this.icon = icon;
+	}
 	public SocialMedia() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SocialMedia(String name, String icon, Set<TeacherSocialMedia> teacherSocialMedia) {
-		super();
-		this.name = name;
-		this.icon = icon;
-		this.teacherSocialMedia = teacherSocialMedia;
-	}
-	public Set<TeacherSocialMedia> getTeacherSocialMedia() {
-		return teacherSocialMedia;
-	}
-	public void setTeacherSocialMedia(Set<TeacherSocialMedia> teacherSocialMedia) {
-		this.teacherSocialMedia = teacherSocialMedia;
-	}
-	
-	public long getIdSocialMedia() {
+	public Long getIdSocialMedia() {
 		return idSocialMedia;
 	}
-	public void setIdSocialMedia(long idSocialMedia) {
+	public void setIdSocialMedia(Long idSocialMedia) {
 		this.idSocialMedia = idSocialMedia;
 	}
 	public String getName() {
@@ -69,6 +61,13 @@ public class SocialMedia implements Serializable {
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
-
+	public Set<TeacherSocialMedia> getTeacherSocialMedias() {
+		return teacherSocialMedias;
+	}
+	public void setTeacherSocialMedias(Set<TeacherSocialMedia> teacherSocialMedias) {
+		this.teacherSocialMedias = teacherSocialMedias;
+	}
 	
+	
+
 }

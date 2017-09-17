@@ -14,7 +14,7 @@ import com.platzi.profesoresplatzi.model.TeacherSocialMedia;
 @Service("socialMediaService")
 @Transactional
 public class SocialMediaServiceImpl implements SocialMediaService{
-
+	
 	@Autowired
 	private SocialMediaDao _socialMediaDao;
 	
@@ -22,20 +22,18 @@ public class SocialMediaServiceImpl implements SocialMediaService{
 	public void saveSocialMedia(SocialMedia socialMedia) {
 		// TODO Auto-generated method stub
 		_socialMediaDao.saveSocialMedia(socialMedia);
-		
 	}
 
 	@Override
-	public void deleteSocialMediaById(Long idSocialMedia) {
+	public void deleteSocialMediaById(Long id) {
 		// TODO Auto-generated method stub
-		_socialMediaDao.deleteSocialMediaById(idSocialMedia);
+		_socialMediaDao.deleteSocialMediaById(id);
 	}
 
 	@Override
 	public void updateSocialMedia(SocialMedia socialMedia) {
 		// TODO Auto-generated method stub
 		_socialMediaDao.updateSocialMedia(socialMedia);
-		
 	}
 
 	@Override
@@ -45,9 +43,9 @@ public class SocialMediaServiceImpl implements SocialMediaService{
 	}
 
 	@Override
-	public SocialMedia findSocialMediaById(Long idSocialMedia) {
+	public SocialMedia findById(Long idSocialMedia) {
 		// TODO Auto-generated method stub
-		return _socialMediaDao.findSocialMediaById(idSocialMedia);
+		return _socialMediaDao.findById(idSocialMedia);
 	}
 
 	@Override

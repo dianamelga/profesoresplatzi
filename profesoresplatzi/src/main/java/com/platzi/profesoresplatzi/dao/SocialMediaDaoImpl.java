@@ -1,49 +1,50 @@
 package com.platzi.profesoresplatzi.dao;
 
+
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.platzi.profesoresplatzi.model.Course;
 import com.platzi.profesoresplatzi.model.SocialMedia;
 import com.platzi.profesoresplatzi.model.TeacherSocialMedia;
-import com.platzi.profesoresplatzi.model.Teacher;
+
 @Repository
 @Transactional
 public class SocialMediaDaoImpl extends AbstractSession implements SocialMediaDao {
 
+	@Override
 	public void saveSocialMedia(SocialMedia socialMedia) {
 		// TODO Auto-generated method stub
 		getSession().persist(socialMedia);
-		
-	}
-
-	public void deleteSocialMediaById(Long idSocialMedia) {
-		// TODO Auto-generated method stub
-		SocialMedia socialMedia = findSocialMediaById(idSocialMedia);
-		if (socialMedia != null) {
-			getSession().delete(socialMedia);
-		}
-		
-	}
-
-	public void updateSocialMedia(SocialMedia socialMedia) {
-		// TODO Auto-generated method stub
-		getSession().update(socialMedia);
-		
-	}
-
-	public List<SocialMedia> findAllSocialMedias() {
-		// TODO Auto-generated method stub
-		return getSession().createQuery("From SocialMedia").list();
 	}
 
 	@Override
-	public SocialMedia findSocialMediaById(Long idSocialMedia) {
+	public void deleteSocialMediaById(Long id) {
 		// TODO Auto-generated method stub
-		return getSession().get(SocialMedia.class, idSocialMedia);
+		SocialMedia socialMedia = findById(id);
+		if (socialMedia  != null) {
+			getSession().delete(socialMedia);
+		}
+	}
+
+	@Override
+	public void updateSocialMedia(SocialMedia socialMedia) {
+		// TODO Auto-generated method stub
+		getSession().update(socialMedia);
+	}
+
+	@Override
+	public List<SocialMedia> findAllSocialMedias() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from SocialMedia").list();
+	}
+
+	@Override
+	public SocialMedia findById(Long idSocialMedia) {
+		// TODO Auto-generated method stub
+		return (SocialMedia) getSession().get(SocialMedia.class, idSocialMedia);
 	}
 
 	@Override
@@ -59,22 +60,28 @@ public class SocialMediaDaoImpl extends AbstractSession implements SocialMediaDa
 		// TODO Auto-generated method stub
 		List<Object[]> objects = getSession().createQuery(
 				"from TeacherSocialMedia tsm join tsm.socialMedia sm "
-				+ "where = sm.idSocialMedia = :idSocialMedia and"
-				+ " tsm.nickname = :nickname")
+				+ "where sm.idSocialMedia = :idSocialMedia and tsm.nickname = :nickname")
 				.setParameter("idSocialMedia", idSocialMedia)
 				.setParameter("nickname", nickname).list();
+		
 		if (objects.size() > 0) {
-			for (Object[] arrayObject : objects) {
-				for (Object objeto : objects) {
-					if (objeto instanceof TeacherSocialMedia) {
-							return (TeacherSocialMedia) objeto;
+			for (Object[] objects2 : objects) {
+				for (Object object : objects2) {
+					if (object instanceof TeacherSocialMedia) {
+						return (TeacherSocialMedia) object;
 					}
 				}
-				
 			}
 		}
+		
 		return null;
+		
 	}
-	
-	
+
+
 }
+
+
+
+
+

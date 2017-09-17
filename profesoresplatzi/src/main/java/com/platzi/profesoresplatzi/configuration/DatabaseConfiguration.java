@@ -21,7 +21,7 @@ public class DatabaseConfiguration {
 	
 		LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
 		sessionFactoryBean.setDataSource(dataSource());
-		sessionFactoryBean.setPackagesToScan("ccom.platzi.profesoresplatzi.model");
+		sessionFactoryBean.setPackagesToScan("com.platzi.profesoresplatzi.model");
 		sessionFactoryBean.setHibernateProperties(hibernateProperties());
 		return sessionFactoryBean;
 	}
